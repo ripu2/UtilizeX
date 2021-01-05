@@ -37,29 +37,37 @@ const Form = ({
       }
     }
     if (found) {
-      Orders[target].customer_email = newEmail;
-      Orders[target].customer_name = newName;
-      Orders[target].quantity = newQuantity;
-      Orders[target].product = newProduct;
+      if (newQuantity !== 0) {
+        Orders[target].customer_email = newEmail;
+        Orders[target].customer_name = newName;
+        Orders[target].quantity = newQuantity;
+        Orders[target].product = newProduct;
+      } else {
+        throw new Error("quantity must me greater than 0");
+      }
     } else {
-      Orders.unshift({
-        customer_name: selectedCustomer,
-        customer_email: selectCustomer_email,
-        product: selectedProduct,
-        quantity: selectQuantity,
-        id: mongoObjectId(),
-      });
+      if (selectQuantity !== 0) {
+        Orders.unshift({
+          customer_name: selectedCustomer,
+          customer_email: selectCustomer_email,
+          product: selectedProduct,
+          quantity: selectQuantity,
+          id: mongoObjectId(),
+        });
+      } else {
+        throw new Error("quantity must me greater than 0");
+      }
     }
   };
   return (
     <>
-      <form class="ui form">
+      <form className="ui form">
         <h3>{message}</h3>
-        <div class="field">
+        <div className="field">
           <label>OrdeId</label>
           <input type="text" name="orderId" value={id} disabled />
         </div>
-        <div class="field">
+        <div className="field">
           <label>Product Name</label>
           <input
             type="text"
@@ -68,7 +76,7 @@ const Form = ({
             onChange={(e) => setSelectedProduct(e.target.value)}
           />
         </div>
-        <div class="field">
+        <div className="field">
           <label>NewEmail</label>
           <input
             type="email"
@@ -78,7 +86,7 @@ const Form = ({
             placeholder="if no change, write previous email"
           />
         </div>
-        <div class="field">
+        <div className="field">
           <label>New Customer Name</label>
           <input
             type="text"
@@ -88,7 +96,7 @@ const Form = ({
             placeholder="if no change, write previous name"
           />
         </div>
-        <div class="field">
+        <div className="field">
           <label>New Quantity</label>
           <input
             type="text"
@@ -100,7 +108,7 @@ const Form = ({
         </div>
 
         <button
-          class="ui button"
+          className="ui button"
           type="submit"
           onClick={(e) =>
             editDoc(
