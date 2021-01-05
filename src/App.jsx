@@ -13,27 +13,33 @@ const App = () => {
     setUserName(res.profileObj.name);
     setUserProfile(res.profileObj.imageUrl);
   };
-  return (
-    <>
-      <Header userName={userName} userImage={userProfile} />
-      <div className="welcomeScreen">
-        <h1>Please login Using your Google Account</h1>
+  const data =
+    userName === "Guest!!" ? (
+      <>
+        <Header userName={userName} userImage={userProfile} />
+        <div className="welcomeScreen">
+          <h1>Please login Using your Google Account</h1>
 
-        <div className="loginSegment">
-          <GoogleLogin
-            clientId="460583569223-akhumklklqcihdmh026lrk7g4l6qilt4.apps.googleusercontent.com"
-            buttonText="Login"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={"single_host_origin"}
-          />
+          <div className="loginSegment">
+            <GoogleLogin
+              clientId="460583569223-akhumklklqcihdmh026lrk7g4l6qilt4.apps.googleusercontent.com"
+              buttonText="Login"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+            />
+          </div>
         </div>
-      </div>
-      <div className="orderList">
-        <Orders />
-      </div>
-    </>
-  );
+      </>
+    ) : (
+      <>
+        <div className="orderList">
+          <Header userName={userName} userImage={userProfile} />
+          <Orders />
+        </div>
+      </>
+    );
+  return <>{data}</>;
 };
 
 export default App;

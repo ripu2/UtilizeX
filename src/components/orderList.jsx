@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Order from "../dummyData";
 import OrderList from "./selectedOrder";
+import Form from "./forms";
 import "../styles/app.scss";
 
 const Orders = () => {
@@ -41,17 +42,6 @@ const Orders = () => {
         </div>
       </div>
 
-      <div className="newEntry">
-        <div className="ui labeled button" tabIndex="0">
-          <div className="ui positive button">
-            <i className=""></i> Add new Order
-          </div>
-
-          <a className="ui basic left pointing blue label">
-            orderCount-{Order.length}
-          </a>
-        </div>
-      </div>
       <div className="currentSelection">
         <OrderList
           id={selectedOrder}

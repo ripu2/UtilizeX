@@ -20,26 +20,33 @@ body {
   text-align: center !important;
 }
 .list {
+  float: right;
   width: 350px;
+  //height: 100% !important;
   margin: 0 auto;
 }
 
 .scroller {
   margin: 0 auto;
-  height: 300px;
+  height: 800px;
   width: 300px;
   overflow: auto;
 }
-
+.form {
+  position: absolute !important;
+  margin-top: 2% !important;
+  width: 30% !important;
+  padding: 2em;
+}
 .item {
   margin: 30px 0;
 }
-.orderList {
-  float: right;
-  margin-left: -50%;
-  margin-top: 2em;
-  margin-right: 1em;
-}
+// .orderList {
+//   float: right;
+//   margin-left: -50%;
+//   margin-top: 2em;
+//   margin-right: 1em;
+// }
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -61,7 +68,7 @@ tr:nth-child(even) {
   margin-left: 2em;
 }
 .currentSelection {
-  margin-top: 3em;
+  margin: 3em;
 }
 
 .editButton {
