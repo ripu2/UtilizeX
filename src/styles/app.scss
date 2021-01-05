@@ -1,3 +1,6 @@
+body {
+  background: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+}
 .welcomeScreen {
   position: fixed;
   top: 50%;
@@ -52,4 +55,15 @@ th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+.newEntry {
+  margin-top: 2em;
+  margin-left: 2em;
+}
+.currentSelection {
+  margin-top: 3em;
+}
+
+.editButton {
+  margin-top: 1em;
 }

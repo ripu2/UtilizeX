@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import Order from "../DummyData";
+import OrderList from "./selectedOrder";
 import "../styles/app.scss";
 
 const Orders = () => {
-  const [selectedOrder, setSelectedOrder] = useState("");
-  const [selectProduct, setSelectedProduct] = useState("");
-  const [selectedCustomer, setSelecetedCustomer] = useState("");
-  const [customer_email, setCustomer_email] = useState("");
-  const [quantity, setQuiantiy] = useState(" ");
+  const [selectedOrder, setSelectedOrder] = useState(Order[0].id);
+  const [selectedProduct, setSelectedProduct] = useState(Order[0].product);
+  const [selectedCustomer, setSelecetedCustomer] = useState(
+    Order[0].customer_name
+  );
+  const [customer_email, setCustomer_email] = useState(Order[0].customer_email);
+  const [quantity, setQuiantiy] = useState(Order[0].quantity);
 
   return (
     <>
@@ -37,15 +40,27 @@ const Orders = () => {
           )}
         </div>
       </div>
-      <h5>
-        CustomerName : {selectedCustomer} <br />
-        customer_email : {customer_email} <br />
-        OrderId : {selectedOrder}
-        <br />
-        ProductName : {selectProduct}
-        <br />
-        quantity : {quantity}
-      </h5>
+
+      <div className="newEntry">
+        <div className="ui labeled button" tabIndex="0">
+          <div className="ui positive button">
+            <i className=""></i> Add new Order
+          </div>
+
+          <a className="ui basic left pointing blue label">
+            orderCount-{Order.length}
+          </a>
+        </div>
+      </div>
+      <div className="currentSelection">
+        <OrderList
+          id={selectedOrder}
+          product={selectedProduct}
+          customer_name={selectedCustomer}
+          customer_email={customer_email}
+          quantity={quantity}
+        />
+      </div>
     </>
   );
 };
