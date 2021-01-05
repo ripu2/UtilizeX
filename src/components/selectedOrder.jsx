@@ -38,26 +38,14 @@ const SelectedOrder = ({
       </div>
       {showForm ? (
         <>
-          {" "}
           <Form
             className="editData"
             id={id}
             product={product}
-            customer_name={selectedCustomer}
+            customer_name={customer_name}
             customer_email={customer_email}
             quantity={quantity}
           />
-          <div className="newEntry">
-            <div className="ui labeled button" tabIndex="0">
-              <div className="ui positive button">
-                <i className=""></i> Add new Order
-              </div>
-
-              <div className="ui basic left pointing blue label">
-                orderCount-{Order.length}
-              </div>
-            </div>
-          </div>
         </>
       ) : (
         <>
