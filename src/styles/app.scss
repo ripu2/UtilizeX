@@ -1,0 +1,18 @@
+.welcomeScreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.header {
+  padding-top: 1em;
+  padding-left: 1em;
+}
+.loginSegment {
+  text-align: center;
+  margin: 2em;
+}
+.loginSegment button {
+  width: 30em !important;
+  text-align: center !important;
+}
