@@ -10,7 +10,6 @@ const Form = ({
   disableStatus,
   buttonMessage,
 }) => {
-  const [disabledStatus, setDisabledStatus] = useState(disableStatus);
   const [selectedCustomer, setSelecetedCustomer] = useState(customer_name);
   const [selectCustomer_email, setCustomer_email] = useState(customer_email);
   const [selectQuantity, setQuiantiy] = useState(quantity);
