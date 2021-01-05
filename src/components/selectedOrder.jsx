@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "./forms";
 import Order from "../dummyData";
 import "../styles/app.scss";
+import Orders from "./orderList";
 const SelectedOrder = ({
   id,
   product,
@@ -10,11 +11,7 @@ const SelectedOrder = ({
   quantity,
 }) => {
   const [showForm, toggleShowForm] = useState(false);
-  const [selectedOrder, setSelectedOrder] = useState("");
-  const [selectedProduct, setSelectedProduct] = useState("");
-  const [selectedCustomer, setSelecetedCustomer] = useState("");
-  const [email, setCustomer_email] = useState("");
-  const [Quantity, setQuiantiy] = useState("");
+  const [showNewForm, toggleShowNewForm] = useState(false);
 
   return (
     <>
@@ -30,7 +27,7 @@ const SelectedOrder = ({
         </h5>
       </div>
       <div className="editButton">
-        <div class="ui labeled button" tabindex="0">
+        <div class="ui labeled button" tabIndex="0">
           <div class="ui button" onClick={() => toggleShowForm(!showForm)}>
             <i class="edit outline icon"></i> Edit this Order
           </div>
@@ -40,6 +37,9 @@ const SelectedOrder = ({
         <>
           <Form
             className="editData"
+            message="Add the required field"
+            disableStatus="disabled"
+            buttonMessage="save changes"
             id={id}
             product={product}
             customer_name={customer_name}
@@ -51,7 +51,10 @@ const SelectedOrder = ({
         <>
           <div className="newEntry">
             <div className="ui labeled button" tabIndex="0">
-              <div className="ui positive button">
+              <div
+                className="ui positive button"
+                onClick={() => toggleShowNewForm(!showNewForm)}
+              >
                 <i className=""></i> Add new Order
               </div>
 
@@ -60,6 +63,19 @@ const SelectedOrder = ({
               </div>
             </div>
           </div>
+          {showNewForm ? (
+            <>
+              <Form
+                className="editData"
+                message="Add the required field"
+                disableStatus=""
+                buttonMessage="Add to collection"
+                id="auto Generated"
+              />
+            </>
+          ) : (
+            <></>
+          )}
         </>
       )}
     </>

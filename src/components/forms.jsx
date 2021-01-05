@@ -1,38 +1,72 @@
 import React, { useState } from "react";
 import Orders from "../dummyData";
-const Form = ({ id, product, customer_name, customer_email, quantity }) => {
-  const [selectedOrder, setSelectedOrder] = useState(id);
-  const [selectedProduct, setSelectedProduct] = useState(product);
+const Form = ({
+  id,
+  product,
+  customer_name,
+  customer_email,
+  quantity,
+  message,
+  disableStatus,
+  buttonMessage,
+}) => {
   const [selectedCustomer, setSelecetedCustomer] = useState(customer_name);
   const [selectCustomer_email, setCustomer_email] = useState(customer_email);
   const [selectQuantity, setQuiantiy] = useState(quantity);
-  const editDoc = (e, id, newName, newEmail, newQuantity) => {
+  const [selectedProduct, setSelectedProduct] = useState(product);
+  var mongoObjectId = function () {
+    var timestamp = ((new Date().getTime() / 1000) | 0).toString(16);
+    return (
+      timestamp +
+      "xxxxxxxxxxxxxxxx"
+        .replace(/[x]/g, function () {
+          return ((Math.random() * 16) | 0).toString(16);
+        })
+        .toLowerCase()
+    );
+  };
+  const editDoc = (e, id, newName, newEmail, newQuantity, newProduct) => {
+    var found = false;
+    var target = 0;
     e.preventDefault();
-
-    console.log(newEmail);
-    console.log(newName);
-    console.log(newQuantity);
     for (var i in Orders) {
       if (Orders[i].id === id) {
-        Orders[i].customer_email = newEmail;
-        Orders[i].customer_name = newName;
-        Orders[i].quantity = newQuantity;
-        console.log(Orders[i]);
+        target = i;
+        found = true;
         break;
       }
+    }
+    if (found) {
+      Orders[target].customer_email = newEmail;
+      Orders[target].customer_name = newName;
+      Orders[target].quantity = newQuantity;
+      Orders[target].product = newProduct;
+    } else {
+      Orders.unshift({
+        customer_name: selectedCustomer,
+        customer_email: selectCustomer_email,
+        product: selectedProduct,
+        quantity: selectQuantity,
+        id: mongoObjectId(),
+      });
     }
   };
   return (
     <>
       <form class="ui form">
-        <h3>Change the attributes you want to edit</h3>
+        <h3>{message}</h3>
         <div class="field">
           <label>OrdeId</label>
           <input type="text" name="orderId" value={id} disabled />
         </div>
         <div class="field">
           <label>Product Name</label>
-          <input type="text" name="product" value={product} disabled />
+          <input
+            type="text"
+            name="product"
+            value={selectedProduct}
+            onChange={(e) => setSelectedProduct(e.target.value)}
+          />
         </div>
         <div class="field">
           <label>NewEmail</label>
@@ -74,11 +108,12 @@ const Form = ({ id, product, customer_name, customer_email, quantity }) => {
               id,
               selectedCustomer,
               selectCustomer_email,
-              selectQuantity
+              selectQuantity,
+              selectedProduct
             )
           }
         >
-          Save Changes
+          {buttonMessage}
         </button>
       </form>
     </>
