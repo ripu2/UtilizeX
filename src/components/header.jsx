@@ -5,11 +5,7 @@ const Header = ({ userName, userImage }) => {
     <>
       <div className="header">
         <h3 className="ui header">
-          <img
-            src={userImage}
-            className="ui circular image"
-            alt="https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png"
-          />
+          <img src={userImage} className="ui circular image" />
           Welcome {userName} !!
         </h3>
       </div>

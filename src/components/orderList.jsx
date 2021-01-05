@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Order from "../DummyData";
+import Order from "../dummyData";
 import OrderList from "./selectedOrder";
 import "../styles/app.scss";
 
