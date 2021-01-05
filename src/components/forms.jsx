@@ -37,18 +37,26 @@ const Form = ({
       }
     }
     if (found) {
-      Orders[target].customer_email = newEmail;
-      Orders[target].customer_name = newName;
-      Orders[target].quantity = newQuantity;
-      Orders[target].product = newProduct;
+      if (newQuantity != 0) {
+        Orders[target].customer_email = newEmail;
+        Orders[target].customer_name = newName;
+        Orders[target].quantity = newQuantity;
+        Orders[target].product = newProduct;
+      } else {
+        throw new Error("quantity must me greater than 0");
+      }
     } else {
-      Orders.unshift({
-        customer_name: selectedCustomer,
-        customer_email: selectCustomer_email,
-        product: selectedProduct,
-        quantity: selectQuantity,
-        id: mongoObjectId(),
-      });
+      if (selectQuantity != 0) {
+        Orders.unshift({
+          customer_name: selectedCustomer,
+          customer_email: selectCustomer_email,
+          product: selectedProduct,
+          quantity: selectQuantity,
+          id: mongoObjectId(),
+        });
+      } else {
+        throw new Error("quantity must me greater than 0");
+      }
     }
   };
   return (
