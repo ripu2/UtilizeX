@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GoogleLogin from "react-google-login";
 import Header from "./components/header";
+import Orders from "./components/orderList";
 import "./styles/app.scss";
 const App = () => {
   const [userName, setUserName] = useState("Guest!!");
@@ -8,6 +9,7 @@ const App = () => {
     "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png"
   );
   const responseGoogle = (res) => {
+    console.log(res);
     setUserName(res.profileObj.name);
     setUserProfile(res.profileObj.imageUrl);
   };
@@ -26,6 +28,9 @@ const App = () => {
             cookiePolicy={"single_host_origin"}
           />
         </div>
+      </div>
+      <div className="orderList">
+        <Orders />
       </div>
     </>
   );
