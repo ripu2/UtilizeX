@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Form from "./forms";
 import Order from "../dummyData";
 import "../styles/app.scss";
-import Orders from "./orderList";
 const SelectedOrder = ({
   id,
   product,
@@ -27,9 +26,9 @@ const SelectedOrder = ({
         </h5>
       </div>
       <div className="editButton">
-        <div class="ui labeled button" tabIndex="0">
-          <div class="ui button" onClick={() => toggleShowForm(!showForm)}>
-            <i class="edit outline icon"></i> Edit this Order
+        <div className="ui labeled button" tabIndex="0">
+          <div className="ui button" onClick={() => toggleShowForm(!showForm)}>
+            <i className="edit outline icon"></i> Edit this Order
           </div>
         </div>
       </div>

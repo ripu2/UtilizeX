@@ -22,6 +22,7 @@ const Orders = () => {
                 <div
                   className="item"
                   value={product}
+                  key={id}
                   onClick={() => {
                     setSelectedOrder(id);
                     setSelectedProduct(product);
