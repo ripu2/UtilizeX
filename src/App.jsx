@@ -9,7 +9,6 @@ const App = () => {
     "https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png"
   );
   const responseGoogle = (res) => {
-    console.log(res);
     setUserName(res.profileObj.name);
     setUserProfile(res.profileObj.imageUrl);
   };
